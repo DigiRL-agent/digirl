@@ -10,10 +10,6 @@ def remote_collect_trajectories(save_path,
                                 worker_ips, 
                                 worker_username, 
                                 trainer):
-    if not os.path.exists(save_path):
-        os.makedirs(save_path)
-    else:
-        os.system(f"rm -rf {save_path}/*")
     # add all workers into known hosts if not already
     colorful_print("Adding all workers to known hosts", fg='green')
     for worker_ip in worker_ips:

@@ -253,6 +253,9 @@ def offpolicy_train_loop(env,\
                                                 gamma = gamma,
                                                 iter=i)
         elif parallel == 'host':
+            if i == 0:
+                if not os.path.exists(save_path):
+                    os.makedirs(save_path)
             trajectories = remote_collect_trajectories(save_path=save_path, 
                                                        worker_temp_path=worker_temp_path, 
                                                        worker_run_path=worker_run_path,
