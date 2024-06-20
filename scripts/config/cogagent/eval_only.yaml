@@ -1,0 +1,25 @@
+defaults:
+  - default
+  - _self_
+
+# train_algorithm: "digirl" # "digirl" of "filteredbc"
+save_path: '/home/<username>/logs/ckpts/general-off2on-cogagent/' # the interacted trajectories will be saved to this path
+run_name: 'cogagent-general-off2on'
+
+cogagent_url:
+- <cogagent-gradio_url>
+
+# training
+task_mode: "evaluate" # "train" or "evaluate" - "train" will do training when evaluating, "evaluate" will NOT do training
+parallel: "single" # "single" or "host" or "worker"
+
+# evaluation-only mode doesn't require any training
+# train_mode: "off2on" # "offline" or "online" or "off2on"
+# offline_data_path: "/home/<username>/logs/general-off2on-sft-trajectories.pt"
+# offline_actor_iterations: 30
+# offline_critic_iterations: 20
+# offline_trajectory_critic_iterations: 20
+
+# train_iterations: 400
+eval_iterations: 1000
+save_freq: 3

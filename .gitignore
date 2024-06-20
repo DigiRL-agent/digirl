@@ -1,0 +1,11 @@
+# Ignore __pycache__ directories
+__pycache__/
+
+# Ignore .egg-info directories
+*.egg-info/
+
+# Ignore outputs directories
+scripts/outputs/
+
+# Ignore wandb directories
+scripts/wandb/

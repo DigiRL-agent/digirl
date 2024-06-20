@@ -1,0 +1,20 @@
+defaults:
+  - default
+  - _self_
+
+parallel: "host"
+run_name: 'general-digirl-off2on-host'
+save_path: "/home/<username>/logs/multimachine" # path that saves checkpoint, trajectories, and images
+worker_temp_path: "/home/<username>/logs/worker" # MUST BE identical to save_path on the worker machine
+worker_run_path: "/home/<username>/digirl/scripts" # where the script dir is on the worker machine
+worker_ips: ["34.45.185.211"]
+worker_username: <username>
+save_freq: 1
+
+# training
+train_algorithm: "digirl" # "digirl" of "filteredbc"
+train_mode: "online" # "offline" or "online" or "off2on"
+task_mode: "train" # "train" or "evaluate" - "train" will do training when evaluating, "evaluate" will NOT do training
+
+train_iterations: 400
+eval_iterations: 1000

@@ -1,0 +1,22 @@
+defaults:
+  - default
+  - _self_
+
+save_path: '/home/<username>/logs/digirl-general-off2on/'
+run_name: 'digirl-general-off2on'
+
+# training
+train_algorithm: "digirl" # "digirl" of "filteredbc"
+train_mode: "off2on" # "offline" or "online" or "off2on"
+task_mode: "train" # "train" or "evaluate" - "train" will do training when evaluating, "evaluate" will NOT do training
+parallel: "single" # "single" or "host" or "worker"
+
+# offline config, uncomment offline_data_path as long as train_model is offline or off2on
+offline_data_path: "/home/<username>/logs/general-off2on-sft-trajectories.pt"
+offline_actor_iterations: 30
+offline_critic_iterations: 20
+offline_trajectory_critic_iterations: 20
+
+train_iterations: 400
+eval_iterations: 1000
+save_freq: 3

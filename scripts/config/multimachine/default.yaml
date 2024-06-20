@@ -1,0 +1,70 @@
+# ===================
+# ====== task ======
+# ===================
+task_set: "general" # "general" or "webshop"
+task_split: "train" # "train" or "test"
+eval_sample_mode: "random" # "random" or "sequential"
+# max_steps of AitW General should be 10; of AitW Web Shopping should
+max_steps: 10
+
+# ===================
+# ====== token ======
+# ===================
+huggingface_token: ''
+wandb_key: ''
+gemini_key: ''
+
+# ===================
+# ====== algo ======
+# ===================
+policy_lm: '/home/<username>/Auto-UI-Base'
+critic_lm: 'roberta-base'
+capacity: 2000 # replay buffer size
+epochs: 5 # number of epochs for the critic each witeration
+batch_size: 4
+bsize: 8 # number of emulators parallelly on the machine
+rollout_size: 16 # how many trajectories to collect between training iterations (should be multiple of bsize)
+grad_accum_steps: 32
+warmup_iter: 0 # how many iterations to only collect data and evaluate before training
+actor_epochs: 20 # number of epochs for training the actor each iteration
+lm_lr: 1e-4
+critic_lr: 1e-4
+max_grad_norm: 0.01
+gamma: 0.5
+
+# ===================
+# ====== agent ======
+# ===================
+use_lora: False
+agent_name: "autoui" # "autoui" or "cogagent" >>> the eval method must be "autoui" if train_algorithm is not none <<<
+do_sample: True
+temperature: 1.0
+tau: 0.01 #soft update parameter
+max_new_tokens: 128
+
+# ===================
+# ====== log ======
+# ===================
+record: False # whether you want to record mp4 videos
+use_wandb: True
+entity_name: ''
+project_name: ''
+
+# ===================
+# ====== path ======
+# ===================
+# query by: echo $ANDROID_AVD_HOME
+android_avd_home: '/home/<username>/.android/avd'
+# query by: which emulator
+emulator_path: '/home/<username>/.android/emulator/emulator'
+# query by: which adb
+adb_path: '/home/<username>/.android/platform-tools/adb'
+assets_path: '/home/<username>/digirl/digirl/environment/android/assets/task_set'
+
+cache_dir: '/home/<username>/.cache'
+
+# offline config, uncomment offline_data_path as long as train_model is offline or off2on
+offline_data_path: "/home/<username>/logs/general-off2on-sft-trajectories.pt"
+offline_actor_iterations: 30
+offline_critic_iterations: 20
+offline_trajectory_critic_iterations: 20

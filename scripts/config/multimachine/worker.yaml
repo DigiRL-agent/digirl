@@ -1,0 +1,16 @@
+defaults:
+  - default
+  - _self_
+
+# parallel
+parallel: "worker" # "single" or "host" or "worker"
+run_name: 'general-digirl-off2on-worker'
+save_path: '/home/<username>/logs/worker'
+
+# training
+train_algorithm: "digirl" # "digirl" of "filteredbc"
+train_mode: "online" # "offline" or "online" or "off2on"
+task_mode: "train" # "train" or "evaluate" - "train" will do training when evaluating, "evaluate" will NOT do training
+
+train_iterations: 1
+eval_iterations: 0
