@@ -181,10 +181,9 @@ Consider citing our paper!
 ```
 @misc{bai2024digirl,
     title={DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning},
-    author={Bai, Hao and Zhou, Yifei and Pan, Jiayi and Cemri, Mert and Suhr, Alane and Levine, Sergey and Kumar, Aviral}
+    author={Hao Bai and Yifei Zhou and Mert Cemri and Jiayi Pan and Alane Suhr and Sergey Levine and Aviral Kumar},
     year={2024},
-    eprint={},
+    eprint={2406.11896},
     archivePrefix={arXiv},
-    primaryClass={cs.LG}
 }
 ```
