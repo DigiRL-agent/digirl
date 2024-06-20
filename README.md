@@ -7,7 +7,7 @@ DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement
 </h3>
 
 <p align="center">
-| <a href="https://digirl-agent.github.io/"><b>Website | Demo | Results</b></a> | <a href="https://google.com"><b>Paper</b></a> | <a href="https://drive.google.com/drive/folders/14Iu6lAHePQ2qG0ghYkVG1RG6RUu7e2Hz?usp=sharing"><b>Checkpoints | Data</b></a> |
+| <a href="https://digirl-agent.github.io/"><b>Website | Demo | Results</b></a> | <a href="https://arxiv.org/abs/2406.11896"><b>Paper</b></a> | <a href="https://drive.google.com/drive/folders/14Iu6lAHePQ2qG0ghYkVG1RG6RUu7e2Hz?usp=sharing"><b>Checkpoints | Data</b></a> |
 </p>
 
 ---
