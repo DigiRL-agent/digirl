@@ -179,11 +179,10 @@ We welcome the open-source community to contribute to this project. If you inven
 Consider citing our paper!
 
 ```
-@misc{bai2024digirl,
-    title={DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning},
-    author={Hao Bai and Yifei Zhou and Mert Cemri and Jiayi Pan and Alane Suhr and Sergey Levine and Aviral Kumar},
-    year={2024},
-    eprint={2406.11896},
-    archivePrefix={arXiv},
+@article{bai2024digirl,
+  title={DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning},
+  author={Bai, Hao and Zhou, Yifei and Cemri, Mert and Pan, Jiayi and Suhr, Alane and Levine, Sergey and Kumar, Aviral},
+  journal={arXiv preprint arXiv:2406.11896},
+  year={2024}
 }
 ```
