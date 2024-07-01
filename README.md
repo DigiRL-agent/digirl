@@ -125,6 +125,8 @@ The Google Drive folder also contains 4 files:
 | `webshop-off2on-digirl.zip` | `run1` | 75.0 | 1.9G |
 | `webshop-off2on-filteredbc.zip` | `run1` | 55.2 | 1.9G |
 
+You can also access through [Huggingface](https://huggingface.co/collections/JackBAI/digirl-checkpoints-6682ea42bdfb5af9bfc5f29f).
+
 Note that these checkpoints only allows evaluation because we only release the AutoUI checkpoint, not the optimizer states.
 
 ### Modify Configurations
