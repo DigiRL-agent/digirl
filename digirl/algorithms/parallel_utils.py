@@ -44,8 +44,8 @@ EOF
         t.join()
         colorful_print("Trajectory collection finished", fg='green')
 
-    command = f"scp -r {save_path}/trainer_current.pt {worker_username}@{worker_ip}:{worker_temp_path}"
     for worker_ip in worker_ips:
+        command = f"scp -r {save_path}/trainer_current.pt {worker_username}@{worker_ip}:{worker_temp_path}"
         os.system(command)
 
     command = f"conda activate digirl && cd {worker_run_path} && python run.py --config-path config/multimachine --config-name worker && exit"
