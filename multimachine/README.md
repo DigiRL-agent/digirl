@@ -33,5 +33,5 @@ cd ./script
 python run.py --config-path config/multimachine --config-name host
 ```
 
-The script will handle everything for you, you don't need to access any worker machine when running multi-machine emulation.
+The script will handle everything for you, you don't need to access any worker machine when running multi-machine emulation. Note that `bsize` in the configuration files means the number of parallel emulators on **each machine**. When there are multiple worker machines collecting trajectories parallely, the total number of parallel emulators will be the sum of `bsize` on each machine.
 
