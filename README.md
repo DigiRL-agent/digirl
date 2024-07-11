@@ -144,6 +144,18 @@ python run.py --config-path config/main --config-name digirl_online
 
 The file `run.py` is the entrance of the program, and you can pass the config name to run different experiments. The config file is in `scripts/config/` directory.
 
+### Main Results Reproduction
+
+To reproduce the results in Table 1 of our paper, first download the corresponding checkpoints as described above. As the results in the training set are obtained by randomly sampling tasks, we recommend reproducing the test results (which are obtained by sequentially sampling the first 96 trajectories).
+
+To do this, modify the [`eval_only.yaml`](https://github.com/DigiRL-agent/digirl/blob/master/scripts/config/main/default.yaml) config file and its parent ['default.yaml'](https://github.com/DigiRL-agent/digirl/blob/master/scripts/config/main/default.yaml) config file to experiment settings. For instance, you can modify these configs for reproduction:
+
+1. `default.yaml`
+    1. Set `task_split: "test"` and `eval_sample_mode: "sequential"`
+    2. Don't forget to increase `max_steps` to `20` if `task_set` is set to `webshop` (as the webshop tasks usually need more steps than the general tasks to complete).
+2. `eval_only.yaml`
+    1. Make sure `rollout_size` (in `default.yaml`) * `eval_iterations` (in `eval_only.yaml`) = 96. For example, `rollout_size (16) * eval_iterations (6) = 96`.
+
 ### (Optional) CogAgent server
 
 The way we set CogAgent up is using a Gradio-based API approach, which means that you need to setup CogAgent inference service on a server, then use our code to query that API. To set up CogAgent, refer to the GitHub Page of project [AutoEval](https://github.com/Berkeley-NLP/Agent-Eval-Refine/blob/main/exps/android_exp/README.md) by [Jiayi Pan](https://www.jiayipan.me/). 
