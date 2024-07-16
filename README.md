@@ -3,7 +3,7 @@
 </p>
 
 <h3 align="center">
-DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning
+DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning | <b>Oral @ [FM WIld, ICML](https://icml-fm-wild.github.io/)</b>)
 </h3>
 
 <p align="center">
