@@ -3,8 +3,11 @@
 </p>
 
 <h3 align="center">
-DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning | <b>Oral @ [FM WIld, ICML](https://icml-fm-wild.github.io/)</b>)
+DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning
+<br>
+<b>Oral @ <a href="https://icml-fm-wild.github.io/">FM Wild</a>, ICML</b>
 </h3>
+
 
 <p align="center">
 | <a href="https://digirl-agent.github.io/"><b>Website | Demo | Results</b></a> | <a href="https://arxiv.org/abs/2406.11896"><b>Paper</b></a> | <a href="https://drive.google.com/drive/folders/14Iu6lAHePQ2qG0ghYkVG1RG6RUu7e2Hz?usp=sharing"><b>Checkpoints | Data</b></a> |
