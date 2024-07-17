@@ -191,7 +191,7 @@ We welcome the open-source community to contribute to this project. If you inven
 - [ ] Other task sets like WebArena.
 - [ ] Potential sub-optimal implementations.
 
-## License
+## 📄 License
 
 All content of this work is under [Apache License v2.0](https://github.com/DigiRL-agent/digirl/blob/master/LICENSE), including codebase, data, and model checkpoints.
 
