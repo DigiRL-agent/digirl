@@ -191,6 +191,10 @@ We welcome the open-source community to contribute to this project. If you inven
 - [ ] Other task sets like WebArena.
 - [ ] Potential sub-optimal implementations.
 
+## License
+
+All content of this work is under Apache License v2.0, including codebase, data, and model checkpoints.
+
 ## 📚 Citation
 
 Consider citing our paper!
