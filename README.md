@@ -193,7 +193,7 @@ We welcome the open-source community to contribute to this project. If you inven
 
 ## License
 
-All content of this work is under Apache License v2.0, including codebase, data, and model checkpoints.
+All content of this work is under [Apache License v2.0](https://github.com/DigiRL-agent/digirl/blob/master/LICENSE), including codebase, data, and model checkpoints.
 
 ## 📚 Citation
 
