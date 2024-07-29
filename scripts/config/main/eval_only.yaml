@@ -2,10 +2,11 @@ defaults:
   - default
   - _self_
 
-train_algorithm: "digirl" # "digirl" of "filteredbc", should be same as the evaluation checkpoint
 save_path: '/home/<username>/logs/ckpts/general-off2on-digirl/'
+run_name: 'autoui-general-eval-only'
 
 # training
+train_algorithm: "digirl" # "digirl" of "filteredbc", should be same as the evaluation checkpoint
 task_mode: "evaluate" # "train" or "evaluate" - "train" will do training when evaluating, "evaluate" will NOT do training
 parallel: "single" # "single" or "host" or "worker"
 
