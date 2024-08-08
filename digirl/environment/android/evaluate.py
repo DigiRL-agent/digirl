@@ -210,7 +210,7 @@ class EndResultEvaluator:
 
     def __call__(self, last_two_images, intent: str) -> bool:
         """
-        last_two_images: a list of two image path. [last_image_path, second_last_image_path]
+        last_two_images: a list of two image path. [last_image_path, this_image_path]
         intent: a string representing the user's intent
 
         Returns:
