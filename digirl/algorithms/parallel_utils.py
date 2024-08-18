@@ -72,6 +72,7 @@ EOF
     trajectories_list = [torch.load(f"{save_path}/{worker_ip}") for worker_ip in worker_ips]
     # aggregate all trajs
     trajectories = []
-    for trajs in trajectories_list:
-        trajectories += trajs
+    for traj_list in trajectories_list:
+        for traj in traj_list:
+            trajectories.append(traj)
     return trajectories
