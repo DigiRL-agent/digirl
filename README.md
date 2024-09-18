@@ -136,6 +136,8 @@ Note that these checkpoints only allows evaluation because we only release the A
 
 Then change the `huggingface_token`, `wandb_token`, `gemini_token`, etc. in `scripts/config/main/default.yaml`, note that you need to specify **all entries** left blank or `<username>` for you in this file. This config is the default configuration - you also need to specify the subconfiguration - for example, if you want to run the online algorithm, you should also examine what to modify in `scripts/config/main/digirl_online`. Feel free to DIY your configs and play with the code!
 
+**Note: to load existing checkpoints, modify `save_path` instead of `policy_lm`.** That is, `policy_lm` should still be the path to the AutoUI checkpoint.
+
 ### Run Experiments
 
 After modifying the config to what you like, you can now run experiments with the following commands:
