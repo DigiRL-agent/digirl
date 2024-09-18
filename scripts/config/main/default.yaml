@@ -17,7 +17,7 @@ gemini_key: ''
 # ===================
 # ====== algo ======
 # ===================
-policy_lm: '/home/<username>/Auto-UI-Base'
+policy_lm: '/home/<username>/Auto-UI-Base' # do NOT modify this. To load existing checkpoints, modify `save_path` in children config files.
 critic_lm: 'roberta-base'
 capacity: 2000 # replay buffer size
 epochs: 5 # number of epochs for the critic each witeration
