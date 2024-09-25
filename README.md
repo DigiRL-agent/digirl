@@ -147,7 +147,7 @@ cd scripts
 python run.py --config-path config/main --config-name digirl_online
 ```
 
-The file `run.py` is the entrance of the program, and you can pass the config name to run different experiments. The config file is in `scripts/config/` directory.
+The file `run.py` is the entrance of the program, and you can pass the config name to run different experiments. The config file is in `scripts/config/` directory. If you frequently get the `Error in environment reset` error, you can try increasing the timeout at [this line](https://github.com/DigiRL-agent/digirl/blob/5b77663c3c3f19932cdb9ceb6fe0474c7b28a0b7/digirl/environment/env_utils.py#L59).
 
 ### Main Results Reproduction
 
