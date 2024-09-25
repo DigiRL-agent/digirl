@@ -147,7 +147,13 @@ cd scripts
 python run.py --config-path config/main --config-name digirl_online
 ```
 
-The file `run.py` is the entrance of the program, and you can pass the config name to run different experiments. The config file is in `scripts/config/` directory. If you frequently get the `Error in environment reset` error, you can try increasing the timeout at [this line](https://github.com/DigiRL-agent/digirl/blob/5b77663c3c3f19932cdb9ceb6fe0474c7b28a0b7/digirl/environment/env_utils.py#L59).
+The file `run.py` is the entrance of the program, and you can pass the config name to run different experiments. The config file is in `scripts/config/` directory.
+
+#### Trouble Shooting (IMPORTANT)
+
+1. If you frequently get the `Error in environment reset` error, you can try increasing the timeout at [this line](https://github.com/DigiRL-agent/digirl/blob/5b77663c3c3f19932cdb9ceb6fe0474c7b28a0b7/digirl/environment/env_utils.py#L59). 
+2. If you frequently get the `409 resource exhausted` error, try adding a `sleep()` function within the `call_gemini()` function [here](https://github.com/DigiRL-agent/digirl/blob/3896fda9d2e31081234f8b716e9049f6a2d6a7f8/digirl/environment/android/evaluate.py#L161). FYI, a free-tier Gemini API fits `sleep(2)` very well.
+3. If you see AVD copying errors (started with `shutil.error`), you can safely ignore it unless the location copying to is empty.
 
 ### Main Results Reproduction
 
