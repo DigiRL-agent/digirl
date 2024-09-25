@@ -56,7 +56,7 @@ def batch_interact_environment(agent, env, num_trajectories,\
                     for _ in range(5):
                         try:
                             if accelerator.is_main_process:
-                                with timeout(seconds=120):
+                                with timeout(seconds=240): # change this if frequently timeout
                                     batch_obs = env.reset()
                                 #the observation space is now a tuple of (text, image)
                                 if type(batch_obs[0]['image_feature']) == torch.Tensor:
