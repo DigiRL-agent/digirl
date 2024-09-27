@@ -282,14 +282,6 @@ def offpolicy_train_loop(env,\
                 replay_buffer.insert(**d)
             for d in val_data:
                 validation_buffer.insert(**d)
-                
-            assert train_algorithm in ['digirl', 'filteredbc'], "Only digirl and filteredbc are supported"
-            if train_algorithm == "filteredbc":
-                filtered_buffer = filterbc_buffer(train_trajectories, batch_size, capacity, agent)
-                filtered_validation_buffer = filterbc_buffer(val_trajectories, batch_size, capacity, agent)
-            elif train_algorithm == 'digirl':
-                filtered_buffer = filter_buffer(train_trajectories, batch_size, capacity, agent)
-                filtered_validation_buffer = filter_buffer(val_trajectories, batch_size, capacity, agent)
         
             info.update({"rollout.reward.mean": np.mean([d["reward"] for d in data]),\
                     "rollout.reward.max": np.max([d["reward"] for d in data]),\
@@ -304,8 +296,20 @@ def offpolicy_train_loop(env,\
         else:
             info = {}
         accelerator.wait_for_everyone()
+        
+        train_trajectories = torch.load(os.path.join(save_path, 'train_trajectories.pt'))
+        val_trajectories = torch.load(os.path.join(save_path, 'val_trajectories.pt'))
         all_trajectories = torch.load(os.path.join(save_path, 'trajectories.pt'))
         replay_buffer = torch.load(os.path.join(save_path, 'replay_buffer.pt'))
+
+        assert train_algorithm in ['digirl', 'filteredbc'], "Only digirl and filteredbc are supported"
+        if train_algorithm == "filteredbc":
+            filtered_buffer = filterbc_buffer(train_trajectories, batch_size, capacity, agent)
+            filtered_validation_buffer = filterbc_buffer(val_trajectories, batch_size, capacity, agent)
+        elif train_algorithm == 'digirl':
+            filtered_buffer = filter_buffer(train_trajectories, batch_size, capacity, agent)
+            filtered_validation_buffer = filter_buffer(val_trajectories, batch_size, capacity, agent)
+        
         print("Training")
         if 'filtered' in train_algorithm:
             info.update(trainer.update(filtered_buffer, no_update_actor = (i < warmup_iter)))
