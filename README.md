@@ -6,6 +6,9 @@
 DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning
 <br>
 <b>Oral @ <a href="https://icml-fm-wild.github.io/">FM Wild</a>, ICML</b>
+    <br>
+    <b>Neurips 2024</b>
+
 </h3>
 
 
