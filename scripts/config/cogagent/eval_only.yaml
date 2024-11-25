@@ -2,7 +2,7 @@ defaults:
   - default
   - _self_
 
-train_algorithm: "digirl" # "digirl" of "filteredbc", it's just a placeholder for cogagent so you can randomly pick one
+# no train algorithm here
 save_path: '/home/<username>/logs/ckpts/general-off2on-cogagent/' # the interacted trajectories will be saved to this path
 run_name: 'cogagent-general-off2on'
 
