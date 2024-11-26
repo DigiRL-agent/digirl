@@ -1,5 +1,5 @@
 import signal
-from gradio_client import Client
+from gradio_client import Client, handle_file # remember to use gradio==4.43.0 for both client and host!
 import gradio_client
 from time import sleep
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -9,7 +9,9 @@ def _get_a_action(pair):
     text = f'What steps do I need to take to "{obs["task"]}"?(with grounding)'
     for _ in range(3):
         try:
-            out = client.predict(text, gradio_client.file(obs['image_path']))
+            out = client.predict(input_text=text, 
+                                 image_prompt=handle_file(obs['image_path']),
+                                 api_name="/predict")
             return out
         except:
             sleep(1)
