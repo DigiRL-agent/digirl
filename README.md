@@ -1,5 +1,7 @@
 <h3 align="center">
-    🎉🎉 <font color="red"><b>Check out our latest progress</b></font> of new offline RL algorithm for Android <a href="https://digirl-agent.github.io/DigiQ-agent.github.io/"><b>DigiQ</b></a> and autonomous skill discovery for web agents <a href="https://yanqval.github.io/PAE/"><b>Proposer-Agent-Evaluator</b></a>.
+    🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉<br>
+     <font color="red"><b>Check out our latest progress</b></font> of new offline RL algorithm for Android <a href="https://digirl-agent.github.io/DigiQ-agent.github.io/"><b>DigiQ</b></a> and autonomous skill discovery for web agents <a href="https://yanqval.github.io/PAE/"><b>Proposer-Agent-Evaluator</b></a>. <br>
+    🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
 </h3>
 
 <p align="center">
