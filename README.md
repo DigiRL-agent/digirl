@@ -1,3 +1,7 @@
+<h3 align="center">
+    🎉🎉 <font color="red"><b>Check out our latest progress</b></font> of new offline RL algorithm for Android <a href="https://digirl-agent.github.io/DigiQ-agent.github.io/"><b>DigiQ</b></a> and autonomous skill discovery for web agents <a href="https://yanqval.github.io/PAE/"><b>Proposer-Agent-Evaluator</b></a>.
+</h3>
+
 <p align="center">
     <img src="./assets/digirl-logo-text.png" alt="logo" width="50%">
 </p>
@@ -8,8 +12,8 @@ DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement
 <b>Oral @ <a href="https://icml-fm-wild.github.io/">FM Wild</a>, ICML</b>
     <br>
     <b>Neurips 2024</b>
-
 </h3>
+
 
 
 <p align="center">
