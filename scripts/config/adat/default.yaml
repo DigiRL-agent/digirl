@@ -1,0 +1,68 @@
+# ADAT Default Configuration
+# Analytics-Driven Adaptive Training for DigiRL
+
+# Inherit from main default config
+defaults:
+  - /main/default
+  - _self_
+
+# Run identification
+run_name: "adat-training"
+save_path: "./outputs/adat/${run_name}"
+
+# Training mode
+train_mode: "online"  # online, offline, or off2on
+train_algorithm: "digirl"
+
+# ========== ADAT-Specific Settings ==========
+
+# Enable/disable ADAT features (for ablation studies)
+use_adaptive_sampling: true        # Curriculum-aware task sampling
+use_trajectory_weighting: true     # Learning-potential trajectory weights
+use_curriculum: true               # Progressive difficulty curriculum
+use_hyperparameter_scheduling: true # Adaptive HP tuning
+
+# Sampling strategy
+# Options: "zpd" (Zone of Proximal Development), "hard_first", "easy_first", "uniform", "cluster_aware"
+sampling_strategy: "zpd"
+
+# Curriculum settings
+curriculum_warmup: 50              # Iterations before curriculum activates
+target_success_rate: 0.5           # Target for ZPD (max learning at this rate)
+
+# Trajectory weighting coefficients
+weight_alpha: 0.3                  # Task importance weight
+weight_beta: 0.5                   # Near-miss bonus weight  
+weight_gamma: 0.2                  # Progress bonus weight
+
+# ========== Standard DigiRL Settings ==========
+
+# Training iterations
+train_iterations: 600
+actor_epochs: 20
+epochs: 3
+trajectory_critic_epochs: 5
+
+# Learning rates
+lm_lr: 1e-4
+critic_lr: 1e-4
+
+# Discount and smoothing
+gamma: 0.5
+tau: 0.1
+
+# Batch settings
+batch_size: 2
+rollout_size: 16
+capacity: 500000
+
+# Gradient settings
+grad_accum_steps: 4
+max_grad_norm: 0.01
+
+# Checkpointing
+save_freq: 25
+
+# Logging
+use_wandb: true
+wandb_project: "digirl-adat"

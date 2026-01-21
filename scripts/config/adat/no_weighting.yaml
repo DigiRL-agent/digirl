@@ -1,0 +1,15 @@
+# ADAT Ablation Configuration - No Weighting
+# Use this to test ADAT without trajectory weighting
+
+defaults:
+  - default
+  - _self_
+
+run_name: "adat-no-weighting"
+save_path: "./outputs/adat/${run_name}"
+
+# Disable weighting only
+use_adaptive_sampling: true
+use_trajectory_weighting: false
+use_curriculum: true
+use_hyperparameter_scheduling: true
