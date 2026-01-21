@@ -1,0 +1,15 @@
+# ADAT Ablation Configuration - No Curriculum
+# Use this to test ADAT without curriculum learning
+
+defaults:
+  - default
+  - _self_
+
+run_name: "adat-no-curriculum"
+save_path: "./outputs/adat/${run_name}"
+
+# Disable curriculum only
+use_adaptive_sampling: true
+use_trajectory_weighting: true
+use_curriculum: false
+use_hyperparameter_scheduling: true
