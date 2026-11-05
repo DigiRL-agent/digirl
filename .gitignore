@@ -9,3 +9,7 @@ scripts/outputs/
 
 # Ignore wandb directories
 scripts/wandb/
+
+# ignore venv
+.venv
+
