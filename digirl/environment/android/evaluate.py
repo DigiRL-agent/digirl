@@ -202,7 +202,7 @@ def process_image(image_path):
 class EndResultEvaluator:
     def __init__(self, gemini_key=None, task_set=None):
         genai.configure(api_key=gemini_key)
-        self.client = genai.GenerativeModel("models/gemini-1.5-pro-latest")
+        self.client = genai.GenerativeModel("gemini-3.8-flash")
         self.img_matrix = None
         self.cache_max = 5
         self.threshold = 0.001 * 255**2

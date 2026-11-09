@@ -1,0 +1,5 @@
+/home/godheadkevin/.android/platforms/android-28/package.xml
+/home/godheadkevin/.android/platform-tools/package.xml
+/home/godheadkevin/.android/emulator/package.xml
+/home/godheadkevin/.android/build-tools/28.0.0/package.xml
+/home/godheadkevin/.android/tools/package.xml

@@ -17,7 +17,7 @@ gemini_key: ''
 # ===================
 # ====== algo ======
 # ===================
-policy_lm: '/home/<username>/Auto-UI-Base' # do NOT modify this. To load existing checkpoints, modify `save_path` in children config files.
+policy_lm: '/home/godheadkevin/Auto-UI-Base/Auto-UI-Base' # Auto-UI base checkpoint
 critic_lm: 'roberta-base'
 capacity: 2000 # replay buffer size
 epochs: 5 # number of epochs for the critic each witeration
@@ -55,10 +55,10 @@ project_name: ''
 # ====== path ======
 # ===================
 # query by: echo $ANDROID_AVD_HOME
-android_avd_home: '/home/<username>/.android/avd'
+android_avd_home: '/home/godheadkevin/.android/avd'
 # query by: which emulator
-emulator_path: '/home/<username>/.android/emulator/emulator'
+emulator_path: '/home/godheadkevin/.android/emulator/emulator'
 # query by: which adb
-adb_path: '/home/<username>/.android/platform-tools/adb'
-cache_dir: '/home/<username>/.cache'
-assets_path: '/home/<username>/digirl/digirl/environment/android/assets/task_set'
+adb_path: '/home/godheadkevin/.android/platform-tools/adb'
+cache_dir: '/home/godheadkevin/.cache'
+assets_path: '/home/godheadkevin/MLRL-group-project-digiRL/digirl/environment/android/assets/task_set'

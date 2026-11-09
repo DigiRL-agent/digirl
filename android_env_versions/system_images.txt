@@ -1,0 +1,12 @@
+===== /home/godheadkevin/.android/system-images/android-28/google_apis/x86_64/source.properties =====
+Pkg.Desc=System Image x86_64 with Google APIs.
+Pkg.Revision=11
+Pkg.Dependencies=emulator#29.1.12
+AndroidVersion.ApiLevel=28
+SystemImage.Abi=x86_64
+SystemImage.TagId=google_apis
+SystemImage.TagDisplay=Google APIs
+SystemImage.GpuSupport=true
+Addon.VendorId=google
+Addon.VendorDisplay=Google Inc.
+

@@ -1,0 +1,4 @@
+Android Debug Bridge version 1.0.41
+Version 37.0.1-15733141
+Installed as /home/godheadkevin/.android/platform-tools/adb
+Running on Linux 7.0.0-38-generic (x86_64)

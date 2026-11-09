@@ -1,0 +1,2 @@
+ANDROID_HOME=/home/godheadkevin/.android
+ANDROID_SDK_ROOT=/home/godheadkevin/.android

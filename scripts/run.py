@@ -45,7 +45,15 @@ def main(config: "DictConfig"):
         all_tasks = load_task_file(config.assets_path, config.task_set, config.task_split)
         bsize = config.bsize
         base_port = 5554
-        evaluators = [EndResultEvaluator(config.gemini_key, config.task_set)] * bsize
+        gemini_key = os.environ.get("GOOGLE_API_KEY") or config.gemini_key
+
+        if not gemini_key:
+            raise ValueError(
+                "Gemini API key is missing. "
+                "Set the GOOGLE_API_KEY environment variable."
+            )
+
+        evaluators = [EndResultEvaluator(gemini_key, config.task_set)] * bsize
         assert len(evaluators) == bsize
         if config.agent_name == "autoui":
             translate_action = autoui_translate_action

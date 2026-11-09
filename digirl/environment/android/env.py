@@ -68,8 +68,19 @@ def clone_avd(src_avd_name, tar_avd_name, android_avd_home):
 
     # Copy the AVD folder
     colorful_print(f"Copying the AVD folder from {src_avd_dir} to {tar_avd_dir}", "green")
+
     if not os.path.exists(tar_avd_dir):
-        shutil.copytree(src_avd_dir, tar_avd_dir)
+        def ignore_lock_files(directory, names):
+            return [
+                name for name in names
+                if name.endswith(".lock") or ".lock." in name
+            ]
+
+        shutil.copytree(
+            src_avd_dir,
+            tar_avd_dir,
+            ignore=ignore_lock_files
+        )
 
     # Copy the .ini file and modify it for the new AVD
     with open(src_ini_file, 'r') as src_ini, open(tar_ini_file, 'w') as tar_ini:

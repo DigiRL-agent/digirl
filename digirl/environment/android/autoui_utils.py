@@ -1,75 +1,101 @@
 from enum import Enum
 from dataclasses import dataclass
 from typing import List, Tuple, Union
-from transformers import Blip2VisionModel, AutoProcessor, Blip2Model
+from transformers import Blip2VisionModel, BlipImageProcessor
 import torch
 from PIL import Image
 
 class ImageFeatureExtractor:
     def __init__(self, device):
-        # Set device based on CUDA availability
-        self.device = device
-        
-        # Initialize and load the BLIP2 model and processor
-        self.model = Blip2Model.from_pretrained("Salesforce/blip2-opt-2.7b").cpu()
-        self.model.language_model = None
-        # self.model = self.model.to(self.device)
-        self.processor = AutoProcessor.from_pretrained("Salesforce/blip2-opt-2.7b")
+        import json
+        from pathlib import Path
+        from safetensors import safe_open
+        from transformers import Blip2Config, Blip2VisionModel, BlipImageProcessor
+
+        self.device = torch.device("cpu")
+
+        model_dir = (
+            Path.home()
+            / ".cache/huggingface/hub/models--Salesforce--blip2-opt-2.7b"
+            / "snapshots/59a1ef6c1e5117b3f65523d1c6066825bcf315e3"
+        )
+
+        config = Blip2Config.from_pretrained(
+            str(model_dir),
+            local_files_only=True,
+        )
+        self.model = Blip2VisionModel(config.vision_config)
+
+        index = json.loads(
+            (model_dir / "model.safetensors.index.json").read_text()
+        )
+        weight_map = index["weight_map"]
+        vision_keys = [
+            key for key in weight_map
+            if key.startswith("vision_model.")
+        ]
+
+        if not vision_keys:
+            raise RuntimeError("No vision weights found in checkpoint index.")
+
+        shard_path = model_dir / weight_map[vision_keys[0]]
+        state = self.model.state_dict()
+        loaded = set()
+
+        with safe_open(str(shard_path), framework="pt", device="cpu") as f:
+            with torch.no_grad():
+                for source_key in vision_keys:
+                    if source_key not in f.keys():
+                        continue
+
+                    target_key = source_key.removeprefix("vision_model.")
+
+                    if target_key not in state:
+                        raise RuntimeError(
+                            f"Unexpected vision parameter: {target_key}"
+                        )
+
+                    tensor = f.get_tensor(source_key)
+
+                    if tensor.shape != state[target_key].shape:
+                        raise RuntimeError(
+                            f"Shape mismatch for {target_key}: "
+                            f"{tuple(tensor.shape)} vs "
+                            f"{tuple(state[target_key].shape)}"
+                        )
+
+                    state[target_key].copy_(tensor)
+                    loaded.add(target_key)
+                    del tensor
+
+        missing = set(state.keys()) - loaded
+        if missing:
+            raise RuntimeError(
+                f"Missing {len(missing)} vision parameters: "
+                f"{sorted(missing)[:10]}"
+            )
+
+        self.model.eval()
+        self.model.to(self.device)
+
+        self.processor = BlipImageProcessor.from_pretrained(
+            str(model_dir),
+            local_files_only=True,
+        )
 
     def to_feat(self, image: Image.Image):
-        """Converts a PIL image to a feature representation using the BLIP2 model.
-        
-        Args:
-            image: A PIL.Image object representing the image to convert.
-            
-        Returns:
-            A tensor representing the image feature.
-        """
-        with torch.no_grad():
-            # Preprocess the image and move to the correct device
-            inputs = self.processor(images=image, return_tensors="pt").to(self.model.device)
-            
-            # Get the image features from the model
-            image_features = self.model.get_image_features(**inputs).pooler_output[0]
-            
-            # Detach the tensor from the graph and move it to CPU
-            image_features = image_features.detach().cpu()
-            
+        with torch.inference_mode():
+            inputs = self.processor(images=image, return_tensors="pt")
+            inputs = {
+                key: value.to(self.device)
+                for key, value in inputs.items()
+            }
+
+            outputs = self.model(**inputs, return_dict=True)
+            image_features = outputs.pooler_output[0].detach().cpu()
+
         return image_features
 
-# class ImageFeatureExtractor:
-#     def __init__(self, device):
-#         # Set device based on CUDA availability
-#         self.device = device
-        
-#         # Initialize and load the BLIP2 model and processor
-#         self.model = Blip2VisionModel.from_pretrained("Salesforce/blip2-opt-2.7b").to(self.device)
-#         self.processor = AutoProcessor.from_pretrained("Salesforce/blip2-opt-2.7b")
-
-#     def to_feat(self, image: Image.Image):
-#         """Converts a PIL image to a feature representation using the BLIP2 model.
-        
-#         Args:
-#             image: A PIL.Image object representing the image to convert.
-            
-#         Returns:
-#             A tensor representing the image feature.
-#         """
-#         with torch.no_grad():
-#             # Preprocess the image and move to the correct device
-#             inputs = self.processor(images=image, return_tensors="pt").to(self.device)
-            
-#             # Get the image features from the model
-#             image_features = self.model(**inputs,
-#                                         output_attentions=False,
-#                                         output_hidden_states=False,
-#                                         return_dict=True).pooler_output[0]
-#             #size is 1408
-            
-#             # Detach the tensor from the graph and move it to CPU
-#             image_features = image_features.detach().cpu()
-            
-#         return image_features
 
 class ActionType(Enum):
     Idle=0

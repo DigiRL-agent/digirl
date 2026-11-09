@@ -41,7 +41,8 @@ def batch_interact_environment(agent, env, num_trajectories,\
     all_trajectories = []
     if accelerator.is_main_process:
         if hasattr(agent, "critic"):
-            env.feature_extractor.model = env.feature_extractor.model.to(env.device)
+            if env.feature_extractor is not None:
+                env.feature_extractor.model.to("cpu")
             agent.critic.to("cpu")
     for num_t in tqdm(range(num_trajectories//bsize), disable = not use_tqdm):
         if accelerator.is_main_process:
